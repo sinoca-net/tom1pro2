@@ -15,11 +15,11 @@
   t.src=v;s=b.getElementsByTagName(e)[0];
   s.parentNode.insertBefore(t,s)}(window, document,'script',
   'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1552923139955965');
+  fbq('init', '1348874036818363');
   fbq('track', 'PageView');
   </script>
   <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=1552923139955965&ev=PageView&noscript=1"
+  src="https://www.facebook.com/tr?id=1348874036818363&ev=PageView&noscript=1"
   /></noscript>
   <!-- End Meta Pixel Code -->
 
@@ -234,92 +234,6 @@
     @keyframes bounce {
       0%, 100% { transform: translateY(0) rotate(-5deg); }
       50%       { transform: translateY(-6px) rotate(5deg); }
-    }
-
-    /* COUNTDOWN TIMER */
-    .timer-wrap {
-      width: 100%;
-      max-width: 400px;
-      margin-bottom: 20px;
-      animation: fade-in 0.7s ease 0.35s both;
-    }
-
-    .timer-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: var(--red-light);
-      text-align: center;
-      margin-bottom: 8px;
-    }
-
-    .timer-boxes {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-
-    .timer-box {
-      background: var(--dark2);
-      border: 1px solid rgba(232,35,26,0.4);
-      border-radius: 10px;
-      padding: 8px 12px;
-      min-width: 52px;
-      text-align: center;
-    }
-
-    .timer-num {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 26px;
-      letter-spacing: 1px;
-      color: var(--white);
-      line-height: 1;
-    }
-
-    .timer-unit {
-      font-size: 9px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: var(--gray);
-      margin-top: 2px;
-    }
-
-    .timer-sep {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 22px;
-      color: var(--red);
-    }
-
-    /* SOCIAL PROOF */
-    .social-proof {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(0,200,83,0.08);
-      border: 1px solid rgba(0,200,83,0.3);
-      border-radius: 100px;
-      padding: 7px 16px;
-      font-size: 12px;
-      font-weight: 600;
-      color: rgba(255,255,255,0.85);
-      margin-top: 14px;
-      animation: fade-in 0.7s ease 0.55s both;
-    }
-
-    .social-proof .live-dot {
-      width: 7px; height: 7px;
-      border-radius: 50%;
-      background: var(--green);
-      flex-shrink: 0;
-      animation: pulse-dot 1.5s ease-in-out infinite;
-    }
-
-    .social-proof b {
-      color: var(--green);
-      font-weight: 800;
     }
 
     /* CTA BUTTON */
@@ -565,27 +479,6 @@
       <div class="bono-desc">En tu primer depósito · Juegos originales</div>
     </div>
 
-    <!-- COUNTDOWN TIMER -->
-    <div class="timer-wrap">
-      <div class="timer-label">⏳ El beneficio termina en</div>
-      <div class="timer-boxes">
-        <div class="timer-box">
-          <div class="timer-num" id="t-hrs">00</div>
-          <div class="timer-unit">Hs</div>
-        </div>
-        <span class="timer-sep">:</span>
-        <div class="timer-box">
-          <div class="timer-num" id="t-min">00</div>
-          <div class="timer-unit">Min</div>
-        </div>
-        <span class="timer-sep">:</span>
-        <div class="timer-box">
-          <div class="timer-num" id="t-sec">00</div>
-          <div class="timer-unit">Seg</div>
-        </div>
-      </div>
-    </div>
-
     <!-- CTA PRINCIPAL -->
     <a
       href="#"
@@ -602,11 +495,6 @@
     </a>
 
     <p class="cta-sub">🎰 Sin costo · Registro en minutos · Bono inmediato</p>
-
-    <div class="social-proof">
-      <span class="live-dot"></span>
-      <span><b id="live-count">—</b> personas registrándose ahora</span>
-    </div>
   </section>
 
   <!-- FEATURES -->
@@ -722,41 +610,6 @@
         this.style.transform = '';
       }, { passive: true });
     });
-
-    // ===== COUNTDOWN TIMER — se resetea todos los días a medianoche =====
-    function updateTimer() {
-      const now = new Date();
-      const medianoche = new Date(now);
-      medianoche.setHours(24, 0, 0, 0);
-      let diff = Math.max(0, medianoche - now);
-
-      const hrs = Math.floor(diff / 3600000);
-      const min = Math.floor((diff % 3600000) / 60000);
-      const sec = Math.floor((diff % 60000) / 1000);
-
-      const pad = n => String(n).padStart(2, '0');
-      document.getElementById('t-hrs').textContent = pad(hrs);
-      document.getElementById('t-min').textContent = pad(min);
-      document.getElementById('t-sec').textContent = pad(sec);
-    }
-    updateTimer();
-    setInterval(updateTimer, 1000);
-
-    // ===== CONTADOR SOCIAL — número fluctúa solo, sensación de actividad real =====
-    (function () {
-      const el = document.getElementById('live-count');
-      let current = 14 + Math.floor(Math.random() * 8); // arranca entre 14 y 21
-
-      function tick() {
-        const delta = Math.random() < 0.6 ? 1 : -1;
-        current = Math.min(29, Math.max(9, current + delta));
-        el.textContent = current;
-        const next = 2500 + Math.random() * 3000;
-        setTimeout(tick, next);
-      }
-      el.textContent = current;
-      setTimeout(tick, 2500);
-    })();
   </script>
 
 </body>
